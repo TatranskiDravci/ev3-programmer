@@ -1,13 +1,14 @@
 # application settings and location of challenge mat image
-fll_mat = 'city_shaper.png' # location of fll challenge mat
-win_x = 1200                # in px (size of challenge mat)
-win_y = 675                 # in px (size of challenge mat)
+fll_mat = 'city_shaper.png'         # location of fll challenge mat
+win_x = 1198                        # in px (size of challenge mat)
+win_y = 673                         # in px (size of challenge mat)
 
 # location and size of robot on start
-robot_size = [17, 19, 18]   # in cm (size of robot)
-robot_start_pos = [4, 4]    # in cm (how far from edges does robot start)
-robot_start_ang = 0         # in deg (start angle of robot)
+robot_size = [16.0, 18, 18.0]       # in cm (size of robot)
+robot_start_pos = [5, 4]            # in cm (how far from edges does robot start)
+robot_start_ang = 0                 # in deg (start angle of robot)
+robot_gyro_pos = [12.7, 9]          # in cm (position of gyroscope)
 
 # conversions
-cmppx = float(202.0/1200.0)
-pxpcm = float(1200.0/202.0)
+cmppx = float(202.0/1198.0)
+pxpcm = float(1198.0/202.0)

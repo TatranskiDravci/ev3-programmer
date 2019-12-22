@@ -13,34 +13,34 @@ def cmtopx(cm):
 pyglet.gl.glLineWidth(8)
 window = pyglet.window.Window(win_x, win_y)
 mat = pyglet.resource.image(fll_mat)
-r = [cmtopx(robot_start_pos[0]), cmtopx(robot_start_pos[1])]
-rra = robot_start_ang
+rpos = [cmtopx(robot_start_pos[0] + robot_gyro_pos[0]), cmtopx(robot_start_pos[1] + robot_gyro_pos[1])]
+rangle = robot_start_ang
 rsize = [cmtopx(robot_size[0]), cmtopx(robot_size[1]), cmtopx(robot_size[2])]
 
 @window.event
 def on_mouse_press(x, y, button, modifiers):
-    Δx = abs(x - r[0])
-    Δy = abs(y - r[1])
+    Δx = abs(x - rpos[0])
+    Δy = abs(y - rpos[1])
     l = math.sqrt((Δx**2) + (Δy**2))
     
-    if(r[0] == 0):
+    if(rpos[0] == 0):
         ix = 2
     else:
-        ix = 2 * r[0]
-    if(rra == 0):
-        iy = r[1]
+        ix = 2 * rpos[0]
+    if(rangle == 0):
+        iy = rpos[1]
     else:
-        iy = math.sin(rra) * (ix/math.cos(rra))
+        iy = math.sin(rangle) * (ix/math.cos(rangle))
 
-    ang = math.degrees(
+    angle = math.degrees(
                         math.acos(
-                                ((ix-r[0])*(x-r[0]) + (iy-r[1])*(y-r[1])) /
-                                ((math.sqrt(((r[0]-ix)**2) + ((r[1]-iy)**2))) * 
-                                (math.sqrt(((x-r[0])**2) + ((y-r[1])**2))))  
+                                ((ix-rpos[0])*(x-rpos[0]) + (iy-rpos[1])*(y-rpos[1])) /
+                                ((math.sqrt(((rpos[0]-ix)**2) + ((rpos[1]-iy)**2))) * 
+                                (math.sqrt(((x-rpos[0])**2) + ((y-rpos[1])**2))))  
                         )
                     )
 
-    print("angle: ", ang)
+    print("angle: ", angle)
     print("distance: ", pxtocm(l))
 
 @window.event
