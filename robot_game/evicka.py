@@ -1,6 +1,6 @@
 from pybricks import ev3brick as brick
-from pybricks.ev3devices import Motor, GyroSensor
-from pybricks.parameters import Port, Stop, Direction, Button
+from pybricks.ev3devices import Motor, GyroSensor, ColorSensor
+from pybricks.parameters import Port, Stop, Direction, Button, Color
 from pybricks.tools import print, wait, StopWatch
 from pybricks.robotics import DriveBase
 import time
@@ -12,6 +12,7 @@ right = Motor(Port.C)
 sLeft = Motor(Port.D)
 sRight = Motor(Port.A)
 gyro = GyroSensor(Port.S1)
+color = ColorSensor(Port.S4)
 gyro.reset_angle(0)
 robot = DriveBase(left, right, 44, 180)
 watch = StopWatch()
@@ -113,3 +114,30 @@ def bw(spd=40, ang=360, turn=True):
     if(turn == True):
         rot(60, 0)
     reset()
+
+
+def lfd(spd=40, til=None):
+    if(til != None):
+        while(color.color() != til):
+            if(gyro.angle() > 0 and color.color() != Color.BLACK):
+                right.run(spd)
+                left.run(spd * (1.5/2))
+            if(gyro.angle() < 0 and color.color() != Color.BLACK):
+                left.run(spd)
+                right.run(spd * (1.5/2))
+            if(color.color() == Color.BLACK):
+                left.run(spd)
+                right.run(spd)
+        right.stop()
+        left.stop()
+    if(til == None):
+        while(1):
+            if(gyro.angle() > 0 and color.color() != Color.BLACK):
+                right.run(spd)
+                left.run(spd * (1.5/2))
+            if(gyro.angle() < 0 and color.color() != Color.BLACK):
+                left.run(spd)
+                right.run(spd * (1.5/2))
+            if(color.color() == Color.BLACK):
+                left.run(spd)
+                right.run(spd)

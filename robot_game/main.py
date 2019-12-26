@@ -74,7 +74,6 @@ while(1):
         bw(350, 3000, False)
 
     if(switch == 4):
-        rot(120, -41)
-        rot(120, 41)
+        lfd(220, (Color.BROWN or Color.GREEN))
             
     switch = 0
