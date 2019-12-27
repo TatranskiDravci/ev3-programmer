@@ -22,7 +22,7 @@ def on_mouse_press(x, y, button, modifiers):
     Δx = abs(x - rpos[0])
     Δy = abs(y - rpos[1])
     l = math.sqrt((Δx**2) + (Δy**2))
-    
+
     if(rpos[0] == 0):
         ix = 2
     else:
@@ -35,8 +35,8 @@ def on_mouse_press(x, y, button, modifiers):
     angle = math.degrees(
                         math.acos(
                                 ((ix-rpos[0])*(x-rpos[0]) + (iy-rpos[1])*(y-rpos[1])) /
-                                ((math.sqrt(((rpos[0]-ix)**2) + ((rpos[1]-iy)**2))) * 
-                                (math.sqrt(((x-rpos[0])**2) + ((y-rpos[1])**2))))  
+                                ((math.sqrt(((rpos[0]-ix)**2) + ((rpos[1]-iy)**2))) *
+                                (math.sqrt(((x-rpos[0])**2) + ((y-rpos[1])**2))))
                         )
                     )
 
@@ -48,4 +48,4 @@ def on_draw():
     window.clear()
     mat.blit(0,0)
 
-pyglet.app.run()  
+pyglet.app.run()
