@@ -17,7 +17,7 @@ while(1):
         switch = 3
     if(Button.RIGHT in brick.buttons()):
         switch = 4
-    
+
     if(switch == 1):
         reset()
         recal()
@@ -75,5 +75,5 @@ while(1):
 
     if(switch == 4):
         lfd(220, (Color.BROWN or Color.GREEN))
-            
+
     switch = 0
